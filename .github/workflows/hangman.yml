@@ -7,10 +7,6 @@ on:
     paths:
       - "/**"
 
-defaults:
-  run:
-    working-directory: /
-
 jobs:
   build:
     runs-on: ubuntu-latest
