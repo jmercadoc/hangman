@@ -7,9 +7,9 @@ import Categories from "./Categories";
 
 const Hangman = () => {
 
-    const wordIsGuessed = () => {
-        return selectedWord.split("").every(letter => guessedLetters.includes(letter));
-      };
+    // const wordIsGuessed = () => {
+    //     return selectedWord.split("").every(letter => guessedLetters.includes(letter));
+    //   };
   
     const randomWordFromCategory = (category) => {
         const randomIndex = Math.floor(Math.random() * category.words.length);
