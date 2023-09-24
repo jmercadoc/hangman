@@ -6,6 +6,11 @@ import Categories from "./Categories";
 
 
 const Hangman = () => {
+
+    const wordHasBeenGuessed = (lettersToCheck) => {
+        return selectedWord.split('').every(letter => letter === ' ' || lettersToCheck.includes(letter));
+      };
+      
   
     const randomWordFromCategory = (category) => {
         const randomIndex = Math.floor(Math.random() * category.words.length);
@@ -91,7 +96,8 @@ const Hangman = () => {
     const [currentCategory, setCurrentCategory] = useState(categories[0]);
     const [selectedWord, setSelectedWord] = useState(randomWordFromCategory(currentCategory));
     const [guessedLetters, setGuessedLetters] = useState([]);
-  
+    const [lastGuessedWord, setLastGuessedWord] = useState("");
+
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     
     useEffect(() => {
@@ -108,10 +114,11 @@ const Hangman = () => {
         const newGuessedLetters = [...guessedLetters, letter];
         setGuessedLetters(newGuessedLetters);
 
-        if (selectedWord.split("").every(l => newGuessedLetters.includes(l))) {
-        setShowSuccessMessage(true); 
-        setSelectedWord(randomWordFromCategory(currentCategory));
-        setGuessedLetters([]);
+        if (wordHasBeenGuessed(newGuessedLetters)) {
+            setLastGuessedWord(selectedWord);
+            setShowSuccessMessage(true); 
+            setSelectedWord(randomWordFromCategory(currentCategory));
+            setGuessedLetters([]);
         }
     };
 
@@ -127,7 +134,7 @@ const Hangman = () => {
         <div>
           <Categories categories={categories} onSelect={handleCategorySelect} />
           <h2>Category: {currentCategory.name}</h2> {}
-          {showSuccessMessage && <h3>You've guessed the word!<br /><span>the word was: {selectedWord}</span></h3> } { }
+          {showSuccessMessage && <h3>You've guessed the word!<br /><span>the word was: {lastGuessedWord}</span></h3> } { }
           <Word word={selectedWord} guessedLetters={guessedLetters} />
           <Letters onClick={handleLetterClick} guessedLetters={guessedLetters} />
         </div>

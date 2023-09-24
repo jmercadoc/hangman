@@ -4,7 +4,7 @@ const Word = ({ word, guessedLetters }) => {
   return (
     <div>
       {word.split('').map(letter => 
-        guessedLetters.includes(letter) ? letter : '_'
+        letter === ' ' ? ' ' : (guessedLetters.includes(letter) ? letter : '_')
       ).join(' ')}
     </div>
   );
