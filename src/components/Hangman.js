@@ -6,10 +6,6 @@ import Categories from "./Categories";
 
 
 const Hangman = () => {
-
-    // const wordIsGuessed = () => {
-    //     return selectedWord.split("").every(letter => guessedLetters.includes(letter));
-    //   };
   
     const randomWordFromCategory = (category) => {
         const randomIndex = Math.floor(Math.random() * category.words.length);
@@ -131,7 +127,7 @@ const Hangman = () => {
         <div>
           <Categories categories={categories} onSelect={handleCategorySelect} />
           <h2>Category: {currentCategory.name}</h2> {}
-          {showSuccessMessage && <h3>You've guessed the word!</h3>} { }
+          {showSuccessMessage && <h3>You've guessed the word!<span>the word was: {selectedWord}</span></h3> } { }
           <Word word={selectedWord} guessedLetters={guessedLetters} />
           <Letters onClick={handleLetterClick} guessedLetters={guessedLetters} />
         </div>
