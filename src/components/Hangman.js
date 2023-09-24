@@ -130,8 +130,8 @@ const Hangman = () => {
     return (
         <div>
           <Categories categories={categories} onSelect={handleCategorySelect} />
-          <h2>Category: {currentCategory.name}</h2> {/* Muestra la categoría actual */}
-          {showSuccessMessage && <h3>You've guessed the word!</h3>} {/* Muestra el mensaje de éxito si es necesario */}
+          <h2>Category: {currentCategory.name}</h2> {}
+          {showSuccessMessage && <h3>You've guessed the word!</h3>} { }
           <Word word={selectedWord} guessedLetters={guessedLetters} />
           <Letters onClick={handleLetterClick} guessedLetters={guessedLetters} />
         </div>
