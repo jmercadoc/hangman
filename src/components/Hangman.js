@@ -127,7 +127,7 @@ const Hangman = () => {
         <div>
           <Categories categories={categories} onSelect={handleCategorySelect} />
           <h2>Category: {currentCategory.name}</h2> {}
-          {showSuccessMessage && <h3>You've guessed the word!<span>the word was: {selectedWord}</span></h3> } { }
+          {showSuccessMessage && <h3>You've guessed the word!<br /><span>the word was: {selectedWord}</span></h3> } { }
           <Word word={selectedWord} guessedLetters={guessedLetters} />
           <Letters onClick={handleLetterClick} guessedLetters={guessedLetters} />
         </div>
