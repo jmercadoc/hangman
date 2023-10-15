@@ -13,7 +13,7 @@ function PlayerView() {
     const token = location.state.token;
     const [currentWord, setCurrentWord] = useState("");
     const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-    const websocketURL = process.env.WEBSOCKET_URL;
+    const websocketURL = "ws://3.85.212.52:8000";
 
     useEffect(() => {
         const websocket = new WebSocket(`${websocketURL}/ws/${gameId}/${playerName}`);
