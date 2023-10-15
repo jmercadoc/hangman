@@ -16,7 +16,7 @@ function PlayerView() {
     
 
     useEffect(() => {
-        const websocket = new WebSocket(`ws://3.85.212.52:8000/ws/ws/${gameId}/${playerName}`);
+        const websocket = new WebSocket(`ws://3.85.212.52:8000/ws/${gameId}/${playerName}`);
         
         websocket.onopen = () => {
             console.log("Connected to the WebSocket");
