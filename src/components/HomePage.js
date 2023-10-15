@@ -8,6 +8,8 @@ function HomePage() {
     const [adminName, setAdminName] = useState('');
     const navigate  = useNavigate ();
     const [playerName, setPlayerName] = useState('');
+    
+    const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
     const createGame = async () => {
         
@@ -17,7 +19,7 @@ function HomePage() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/create_game/', { admin: adminName });
+            const response = await axios.post(`${apiBaseUrl}/create_game/`, { admin: adminName });
             const { gameId, token, message } = response.data;
 
             setGameId(gameId);
@@ -33,12 +35,13 @@ function HomePage() {
     const joinGame = async () => {
         try {
             // Aquí, asumiendo que tienes un endpoint /join_game/{gameId} en tu backend:
-            const response = await axios.post(`http://localhost:8000/join_game/${gameId}`, { player_name: playerName });
+            const response = await axios.post(`${apiBaseUrl}/join_game/${gameId}`, { player_name: playerName });
             
 
             if (response.status === 200) {
                 // Navega a una vista de jugador o lo que desees hacer luego de unirse
                 const { token, message } = response.data;
+                console.log(message);
                 setToken(token);
                 setPlayerName(playerName);
 

@@ -4,10 +4,12 @@ export const WebSocketContext = createContext();
 
 export const WebSocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
+  
+  const websocketURL = process.env.WEBSOCKET_URL;
 
   useEffect(() => {
     // Cambia la URL según tu configuración de back-end
-    const ws = new WebSocket('ws://localhost:8000/ws/game_id/player_name');
+    const ws = new WebSocket(`ws://${websocketURL}/ws/game_id/player_name`);
     ws.onopen = () => console.log('Connected to the WebSocket');
     setSocket(ws);
 
