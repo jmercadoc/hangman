@@ -41,7 +41,7 @@ function PlayerView() {
                 websocket.close();
             }
         };
-    });
+    }, [gameId, playerName, currentWord, ws, websocketURL]);
 
 
     const guessLetter = async (letter) => {
