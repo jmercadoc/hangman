@@ -5,10 +5,10 @@ import LetterButton from './LetterButton';
 import axios from 'axios'; 
 
 
-const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-const websocketURL = process.env.WEBSOCKET_URL;
 
 function PlayerView() {
+    const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+    const websocketURL = process.env.WEBSOCKET_URL;
     const { gameId, playerName } = useParams();
     const [ws, setWs] = useState(null);
     const location = useLocation();
