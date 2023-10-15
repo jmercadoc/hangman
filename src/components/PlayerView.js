@@ -31,13 +31,14 @@ function PlayerView() {
         };
 
         setWs(websocket);
+        console.log(ws);
         // Limpiar al desmontar el componente.
         return () => {
             if (websocket) {
                 websocket.close();
             }
         };
-    }, [gameId, playerName]);
+    }, [gameId, playerName, currentWord, ws]);
 
 
     const guessLetter = async (letter) => {
