@@ -5,6 +5,9 @@ import LetterButton from './LetterButton';
 import axios from 'axios'; 
 
 
+const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+const websocketURL = process.env.WEBSOCKET_URL;
+
 function PlayerView() {
     const { gameId, playerName } = useParams();
     const [ws, setWs] = useState(null);
@@ -13,7 +16,7 @@ function PlayerView() {
     const [currentWord, setCurrentWord] = useState("");
 
     useEffect(() => {
-        const websocket = new WebSocket(`ws://localhost:8000/ws/${gameId}/${playerName}`);
+        const websocket = new WebSocket(`ws://${websocketURL}/ws/${gameId}/${playerName}`);
         
         websocket.onopen = () => {
             console.log("Connected to the WebSocket");
@@ -44,7 +47,7 @@ function PlayerView() {
     const guessLetter = async (letter) => {
         try {
             const response = await axios.post(
-                `http://127.0.0.1:8000/guess_letter/${gameId}`, 
+                `${apiBaseUrl}/guess_letter/${gameId}`, 
                 { letter }, 
                 {
                     headers: {
