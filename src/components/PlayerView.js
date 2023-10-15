@@ -34,7 +34,7 @@ function PlayerView() {
         };
 
         setWs(websocket);
-        console.log(ws);
+        //console.log(ws);
         // Limpiar al desmontar el componente.
         return () => {
             if (websocket) {
