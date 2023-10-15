@@ -8,7 +8,7 @@ import axios from 'axios';
 
 function PlayerView() {
     const { gameId, playerName } = useParams();
-    const [ws, setWs] = useState(null);
+    //const [ws, setWs] = useState(null);
     const location = useLocation();
     const token = location.state.token;
     const [currentWord, setCurrentWord] = useState("");
@@ -22,6 +22,10 @@ function PlayerView() {
             console.log("Connected to the WebSocket");
         };
 
+        websocket.onerror = (error) => {
+            console.log("Error en la conexión:", error);
+          };
+
         websocket.onmessage = (event) => {
             const message = event.data;
             console.log("Message from server:", message);
@@ -33,7 +37,7 @@ function PlayerView() {
             console.log("Disconnected from the WebSocket");
         };
 
-        setWs(websocket);
+        //setWs(websocket);
         //console.log(ws);
         // Limpiar al desmontar el componente.
         return () => {
