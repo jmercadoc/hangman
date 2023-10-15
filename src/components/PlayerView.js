@@ -13,10 +13,10 @@ function PlayerView() {
     const token = location.state.token;
     const [currentWord, setCurrentWord] = useState("");
     const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-    const websocketURL = "ws://3.85.212.52:8000";
+    
 
     useEffect(() => {
-        const websocket = new WebSocket(`${websocketURL}/ws/${gameId}/${playerName}`);
+        const websocket = new WebSocket(`ws://3.85.212.52:8000/ws/ws/${gameId}/${playerName}`);
         
         websocket.onopen = () => {
             console.log("Connected to the WebSocket");
@@ -41,7 +41,7 @@ function PlayerView() {
                 websocket.close();
             }
         };
-    }, [gameId, playerName, currentWord, ws, websocketURL]);
+    }, [gameId, playerName, currentWord, ws]);
 
 
     const guessLetter = async (letter) => {
