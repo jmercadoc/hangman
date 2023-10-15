@@ -55,7 +55,7 @@ function HomePage() {
 
     return (
         <div>
-            <h1>HomePage</h1>
+            <h1>Hangman Game</h1>
             
             <label>
                 Nombre del Administrador:
