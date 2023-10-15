@@ -1,16 +1,18 @@
 import React from 'react';
-import './App.css';
-import Hangman from './components/Hangman';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './components/HomePage';
+import GameAdmin from './components/GameAdmin';
+import PlayerView from './components/PlayerView';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hangman Game</h1>
-        <Hangman />
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/admin/:gameId" element={<GameAdmin />} />
+        <Route path="/playerView/:gameId/:playerName" element={<PlayerView />} />
+      </Routes>
+    </Router>
   );
 }
 
