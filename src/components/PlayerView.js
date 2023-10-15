@@ -30,7 +30,6 @@ function PlayerView() {
             const message = event.data;
             console.log("Message from server:", message);
             setCurrentWord(message);
-            console.log("currentWord--->", currentWord);
         };
 
         websocket.onclose = () => {
@@ -45,7 +44,7 @@ function PlayerView() {
                 websocket.close();
             }
         };
-    }, [gameId, playerName, currentWord]);
+    }, [gameId, playerName]);
 
 
     const guessLetter = async (letter) => {
