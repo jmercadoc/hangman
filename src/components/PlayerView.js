@@ -7,13 +7,13 @@ import axios from 'axios';
 
 
 function PlayerView() {
-    const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-    const websocketURL = process.env.WEBSOCKET_URL;
     const { gameId, playerName } = useParams();
     const [ws, setWs] = useState(null);
     const location = useLocation();
     const token = location.state.token;
     const [currentWord, setCurrentWord] = useState("");
+    const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+    const websocketURL = process.env.WEBSOCKET_URL;
 
     useEffect(() => {
         const websocket = new WebSocket(`ws://${websocketURL}/ws/${gameId}/${playerName}`);
@@ -41,7 +41,7 @@ function PlayerView() {
                 websocket.close();
             }
         };
-    }, [gameId, playerName, currentWord, ws]);
+    });
 
 
     const guessLetter = async (letter) => {
