@@ -9,14 +9,14 @@ export const WebSocketProvider = ({ children }) => {
 
   useEffect(() => {
     // Cambia la URL según tu configuración de back-end
-    const ws = new WebSocket(`ws://${websocketURL}/ws/game_id/player_name`);
+    const ws = new WebSocket(`${websocketURL}/ws/game_id/player_name`);
     ws.onopen = () => console.log('Connected to the WebSocket');
     setSocket(ws);
 
     return () => {
       ws.close();
     };
-  }, []);
+  }, [websocketURL]);
 
   return (
     <WebSocketContext.Provider value={socket}>

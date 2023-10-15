@@ -16,7 +16,7 @@ jobs:
         env:
           PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
           REACT_APP_API_BASE_URL: "http://3.85.212.52:8000"
-          WEBSOCKET_URL: "3.85.212.52:8000"
+          WEBSOCKET_URL: "ws://3.85.212.52:8000"
 
 
       - uses: shinyinc/action-aws-cli@v1.2
